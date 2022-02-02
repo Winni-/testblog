@@ -1,12 +1,17 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import { postApi } from "../features/posts/postsAPI";
+import { postApi } from '../features/posts/postsAPI';
+import { userApi } from '../features/users/usersApi';
+
 
 export const store = configureStore({
   reducer: {
     [postApi.reducerPath]: postApi.reducer,
+    [userApi.reducerPath]: userApi.reducer,
   },
   middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware().concat(postApi.middleware)
+    return getDefaultMiddleware()
+      .concat(postApi.middleware)
+      .concat(userApi.middleware)
   },
 });
 

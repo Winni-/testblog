@@ -2,13 +2,16 @@ import React, {FC} from "react";
 import styled from "styled-components";
 import { shorten } from "./utils";
 import {Post} from "./types";
+import User from "../users/user";
 
-const PostItem: FC<Post> = ({id, title, body}) =>
+const PostItem: FC<Post> = ({id, userId, title, body}) =>
   <Container key={id}>
     <Image src={`https://picsum.photos/500?random=${id}`} alt={title} />
-    <User />
-    <Title>{title}</Title>
-    <Body>{shorten(body)}</Body>
+    <Text>
+      <Title>{title}</Title>
+      <StyledUser id={userId} />
+      <Body>{shorten(body)}</Body>
+    </Text>
   </Container>;
 
 export default PostItem;
@@ -22,15 +25,19 @@ const Container = styled.div`
 const Image = styled.img`
   max-width: 100%;
 `;
-const User = styled.div``;
-const Title = styled.h3`
+const Text = styled.article`
   padding: 0 1em;
+`;
+const StyledUser = styled(User)`
+  font-size: .9em;
+  color: gray;
+`;
+const Title = styled.h3`
   :first-letter{
     text-transform: capitalize;
   }
 `;
 const Body = styled.p`
-  padding: 0 1em;
   :first-letter{
     text-transform: capitalize;
   }

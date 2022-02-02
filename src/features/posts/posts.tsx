@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
-import { useGetPostsQuery } from './postsAPI';
-import loader from './Pendulum.gif';
-import PostItem from './post';
+import { useGetPostsQuery } from "./postsAPI";
+import loader from "./Pendulum.gif";
+import PostItem from "./post";
 
 export default function Posts() {
   const { data, error, isLoading } = useGetPostsQuery();
@@ -89,10 +89,10 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1em;
+  padding: 0 1em;
   grid-auto-rows: minmax(100px, auto);
   @media (max-width: 100em) {
     grid-template-columns: repeat(3, 1fr);
-    padding: 0 1em;
   }
   @media (max-width: 55em) {
     grid-template-columns: repeat(2, 1fr);
